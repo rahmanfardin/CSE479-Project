@@ -25,7 +25,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $_SESSION['username'] = $user;
         $_SESSION['loggin'] = true;
         header("Refresh: 2; url=cse430-Dinosaur-Chrome-Game/index.php");
-        echo "Username already exists. WELCOME: " .$_SESSION['username'];
+        //echo "Username already exists. WELCOME: " .$_SESSION['username'];
         
     } else {
         $score = 0;
@@ -53,6 +53,7 @@ $conn->close();
     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
+    <br>
     <?php 
     if ($_SESSION['user_exists']){
         echo "<h2>Username already exists. WELCOME: " .$_SESSION['username']. "</h2>";
