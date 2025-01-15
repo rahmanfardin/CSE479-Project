@@ -118,10 +118,22 @@
 				this.player.wideEyed = true;
 				
 				this.score.gameOver();
+				this.showGameOverScreen();
 				return;
 			}
 		}
 	};
+	
+	Game.prototype.showGameOverScreen = function() {
+		var gameOverScreen = document.getElementById('game-over-screen');
+		var finalScoreElement = document.getElementById('final-score');
+		finalScoreElement.textContent = this.score.score;
+		gameOverScreen.classList.remove('hidden');
+	};
+	
+	document.getElementById('restart-button').addEventListener('click', function() {
+		location.reload();
+	});
 
 	Game.prototype.clear = function() {
 		this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
