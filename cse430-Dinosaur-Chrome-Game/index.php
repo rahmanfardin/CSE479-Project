@@ -28,6 +28,7 @@ if ($_SESSION['loggin']) {
     </form>
     
     <button id="refresh-button">Refresh</button>
+    <button id="leaderboard-button" onclick="window.location.href='leaderboard.php'">Show Leaderboard</button>
 
     <!-- Game Over Screen -->
     <div id="game-over-screen" class="hidden">

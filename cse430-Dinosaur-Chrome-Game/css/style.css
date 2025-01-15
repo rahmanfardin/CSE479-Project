@@ -28,6 +28,24 @@ body {
     display: none;
 }
 
+#leaderboard {
+    margin-top: 20px;
+    text-align: left;
+}
+
+#leaderboard h2 {
+    margin-bottom: 10px;
+}
+
+#leaderboard ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+#leaderboard li {
+    margin-bottom: 5px;
+}
+
 #game-over-screen {
     position: fixed;
     top: 50%;
@@ -50,6 +68,6 @@ canvas {
 }
 
 .controls {
-    text-align: right;
+    text-align: middle;
     color: #aaa;
 }
