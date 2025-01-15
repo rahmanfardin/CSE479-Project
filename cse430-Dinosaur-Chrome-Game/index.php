@@ -13,7 +13,7 @@ if ($_SESSION['loggin']) {
 <html>
 <head>
     <title>RAWRRRR!</title>
-    <link rel="stylesheet" type="text/css" href="css/s"> 
+    <link rel="stylesheet" type="text/css" href="css/style.css"> 
     <link rel="icon" type="image/x-icon" href="favicon.ico">
 </head>
 <body>
