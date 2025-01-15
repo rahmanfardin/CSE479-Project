@@ -1,1 +1,1 @@
-this code is a fork of [link](https://github.com/ilmanfarabi/cse430-Dinosaur-Chrome-Game/tree/Fardin)
+this code is a fork of [CloudCannon/Dinosaur-Chrome-Game](https://github.com/ilmanfarabi/cse430-Dinosaur-Chrome-Game/tree/Fardin)
