@@ -116,6 +116,7 @@
 				this.running = false;
 				this.finished = true;
 				this.player.wideEyed = true;
+				
 				this.score.gameOver();
 				return;
 			}

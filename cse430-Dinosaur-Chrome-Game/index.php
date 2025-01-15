@@ -18,7 +18,8 @@ if ($_SESSION['loggin']) {
 </head>
 <body>
     <h1>Dinosaur Game!</h1>
-    <p class="previous-score">Previous HighScore: <span id="previous-score"><?php echo htmlspecialchars($score); ?></span></p>
+	<p class="username">Welcome, <span id="username"><?php echo htmlspecialchars($user); ?></span></p>
+    <p class="previous-score">Previous Highscore: <span id="previous-score"><?php echo htmlspecialchars($score); ?></span></p>
     <canvas id="game" height="200" width="800"></canvas>
     <p class="controls">press space bar to start</p>
 
