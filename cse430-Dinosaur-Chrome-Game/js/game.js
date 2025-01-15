@@ -134,28 +134,28 @@
 	document.getElementById('restart-button').addEventListener('click', function() {
 		location.reload();
 	});
-
+	
 	Game.prototype.clear = function() {
 		this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
 	};
-
+	
 	Game.prototype.step = function(timestamp) {
 		if (this.running && this.lastTick) {
 			this.offset += Math.min((timestamp - this.lastTick), MAX_TIME_TICK) * OFFSET_SPEED;
-
+	
 			this.removeOldCacti();
 			this.updateCacti();
-
+	
 			if (!this.player.isJumping(this.offset) && spacePressed) {
 				this.player.startJump(this.offset);
 			}
-
+	
 			this.checkCactusHit();
 			this.draw();
 		} else if (spacePressed) {
 			this.running = true;
 		}
-
+	
 		if (!this.finished) {
 			this.lastTick = timestamp;
 			requestAnimationFrame(this.step.bind(this));
@@ -164,3 +164,9 @@
 
 	namespace.Game = Game;
 })(window);
+
+document.addEventListener('DOMContentLoaded', function() {
+    new Game({
+        el: document.getElementById("game")
+    });
+});
