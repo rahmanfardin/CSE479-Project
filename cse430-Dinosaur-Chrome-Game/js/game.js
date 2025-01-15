@@ -118,7 +118,7 @@
 				this.player.wideEyed = true;
 				
 				this.score.gameOver();
-				this.showGameOverScreen();
+				//this.showGameOverScreen();
 				return;
 			}
 		}
@@ -165,8 +165,3 @@
 	namespace.Game = Game;
 })(window);
 
-document.addEventListener('DOMContentLoaded', function() {
-    new Game({
-        el: document.getElementById("game")
-    });
-});
