@@ -13,20 +13,28 @@ if ($_SESSION['loggin']) {
 <html>
 <head>
     <title>RAWRRRR!</title>
-    <link rel="stylesheet" href="style.css"> 
+    <link rel="stylesheet" type="text/css" href="css/style.css"> 
     <link rel="icon" type="image/x-icon" href="favicon.ico">
 </head>
 <body>
     <h1>Dinosaur Game!</h1>
-    <p class="previous-score">Previous Score: <span id="previous-score"><?php echo htmlspecialchars($score); ?></span></p>
+    <p class="username">Welcome, <span id="username"><?php echo htmlspecialchars($user); ?></span></p>
+    <p class="previous-score">Previous Highscore: <span id="previous-score"><?php echo htmlspecialchars($score); ?></span></p>
     <canvas id="game" height="200" width="800"></canvas>
     <p class="controls">press space bar to start</p>
 
-    <form action="logout.php" method="post">
-        <button type="submit">Logout</button>
+    <form action="logout.php" method="post" class="logout-form">
+        <button type="submit" class="logout-button">Logout</button>
     </form>
     
-    <button id="refresh-button">Refresh High Score</button>
+    <button id="refresh-button">Refresh</button>
+
+    <!-- Game Over Screen -->
+    <div id="game-over-screen" class="hidden">
+        <h2>Game Over!</h2>
+        <p>Your score: <span id="final-score"></span></p>
+        <button id="restart-button">Restart</button>
+    </div>
 
     <script src="js/helpers.js"></script>
     <script src="js/objects/game-object.js"></script>

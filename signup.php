@@ -36,12 +36,31 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $_SESSION['user_exists'] = false;
             $_SESSION['username'] = $user;
             $_SESSION['loggin'] = true;
-            echo "New record created successfully. WELCOME: " .$_SESSION['username'];
+            //echo "New record created successfully. WELCOME: " .$_SESSION['username'];
             header("Refresh: 2; url=cse430-Dinosaur-Chrome-Game/index.php");
         } else {
-            echo "Error: " . $insertSql . "<br>" . $conn->error;
+            //echo "Error: " . $insertSql . "<br>" . $conn->error;
         }
     }
 }
 
 $conn->close();
+?>
+<!DOCTYPE>
+<html>
+<head>
+    <title>REDIRECTING...</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+    <?php 
+    if ($_SESSION['user_exists']){
+        echo "<h2>Username already exists. WELCOME: " .$_SESSION['username']. "</h2>";
+    } else {
+        echo "<h2>New record created successfully. WELCOME: " .$_SESSION['username']. "</h2>";
+    }
+    
+    ?>
+    
+</body>
+</html>
