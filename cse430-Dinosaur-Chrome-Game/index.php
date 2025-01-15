@@ -23,11 +23,11 @@ if ($_SESSION['loggin']) {
     <canvas id="game" height="200" width="800"></canvas>
     <p class="controls">press space bar to start</p>
 
-    <form action="logout.php" method="post">
-        <button type="submit">Logout</button>
+    <form action="logout.php" method="post" class="logout-form">
+        <button type="submit" class="logout-button">Logout</button>
     </form>
     
-    <button id="refresh-button">Refresh High Score</button>
+    <button id="refresh-button">Refresh</button>
 
     <!-- Game Over Screen -->
     <div id="game-over-screen" class="hidden">
