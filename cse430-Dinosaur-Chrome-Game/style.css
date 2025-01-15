@@ -19,3 +19,8 @@ canvas {
 	text-align: right;
 	color: #aaa;
 }
+
+.highlight {
+    color: red;
+    font-weight: bold;
+}
