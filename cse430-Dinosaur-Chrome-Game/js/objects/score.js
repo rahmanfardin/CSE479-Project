@@ -26,7 +26,7 @@
     };
 
     ScoreBoard.prototype.gameOver = function() {
-        alert("Game Over! Your score is: " + scoreBoard.score);
+        //alert("Game Over! Your score is: " + scoreBoard.score);
         var xhr = new XMLHttpRequest();
         xhr.open("POST", "update_score.php", true);
         xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
