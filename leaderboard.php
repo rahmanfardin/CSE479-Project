@@ -19,6 +19,7 @@ $conn->close();
 <head>
     <title>Leaderboard</title>
     <link rel="stylesheet" type="text/css" href="leaderboard.css">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
 </head>
 <body>
     <h1>Leaderboard</h1>
