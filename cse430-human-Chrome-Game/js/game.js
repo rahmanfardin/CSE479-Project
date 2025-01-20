@@ -121,18 +121,30 @@
                 this.player.wideEyed = true;
 
                 this.score.gameOver();
-                //this.showGameOverScreen();
+                this.showGameOverScreen();
                 return;
             }
         }
     };
 
     Game.prototype.showGameOverScreen = function() {
-        var gameOverScreen = document.getElementById('game-over-screen');
-        var finalScoreElement = document.getElementById('final-score');
-        finalScoreElement.textContent = this.score.score;
-        gameOverScreen.classList.remove('hidden');
+        // var gameOverScreen = document.getElementById('game-over-screen');
+        // var finalScoreElement = document.getElementById('final-score');
+        // finalScoreElement.textContent = this.score.score;
+        // gameOverScreen.classList.remove('hidden');
+    
+        // Send the score to the server
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", "update_score.php", true);
+        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4 && xhr.status === 200) {
+                console.log("Score updated successfully");
+            }
+        };
+        xhr.send("score=" + this.score.score);
     };
+    
 
     document.getElementById('restart-button').addEventListener('click', function() {
         location.reload();

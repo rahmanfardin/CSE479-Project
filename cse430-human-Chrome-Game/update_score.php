@@ -7,7 +7,7 @@ if ($_SESSION['loggin'] && isset($_POST['score'])) {
     $newScore = $_POST['score'];
 
     // Retrieve the current score from the database
-    $query = "SELECT score FROM dino WHERE username='$user'";
+    $query = "SELECT score FROM dino WHERE username='$user' AND game='human'";
     $result = $conn->query($query);
 
     if ($result->num_rows > 0) {
@@ -16,7 +16,7 @@ if ($_SESSION['loggin'] && isset($_POST['score'])) {
 
         // Update the score only if the new score is higher
         if ($newScore > $currentScore) {
-            $updateSql = "UPDATE dino SET score='$newScore' WHERE username='$user'";
+            $updateSql = "UPDATE dino SET score='$newScore' WHERE username='$user' AND game='human'";
             if ($conn->query($updateSql) === TRUE) {
                 echo "Score updated successfully";
             } else {

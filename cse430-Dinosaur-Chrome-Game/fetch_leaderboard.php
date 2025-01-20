@@ -1,7 +1,9 @@
 <?php
 require_once 'dbcon.php';
 
-$query = "SELECT username, score FROM dino ORDER BY score DESC LIMIT 100";
+$game = $_GET['game'] ?? 'dinosaur'; // Default to 'dinosaur' game if not specified
+
+$query = "SELECT username, score FROM dino WHERE game='$game' ORDER BY score DESC";
 $result = $conn->query($query);
 
 $leaderboard = [];
@@ -11,6 +13,8 @@ if ($result->num_rows > 0) {
     }
 }
 
-$conn->close();
+header('Content-Type: application/json');
 echo json_encode($leaderboard);
+
+$conn->close();
 ?>

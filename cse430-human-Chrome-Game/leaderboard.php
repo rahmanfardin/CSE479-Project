@@ -14,12 +14,12 @@ require_once 'dbcon.php';
 <!DOCTYPE html>
 <html>
 <head>
-    <title>DINO | Leaderboard</title>
+    <title>Human Game | Leaderboard</title>
     <link rel="stylesheet" type="text/css" href="css/leaderboard.css">
     <link rel="icon" type="image/x-icon" href="favicon.ico">
 </head>
 <body>
-    <h1>Leaderboard</h1>
+    <h1>Human Game Leaderboard</h1>
     <table id="leaderboard-table">
         <thead>
             <tr>
@@ -36,7 +36,7 @@ require_once 'dbcon.php';
 
     <script>
         function fetchLeaderboard() {
-            fetch('fetch_leaderboard.php')
+            fetch('fetch_leaderboard.php?game=human')
                 .then(response => response.json())
                 .then(data => {
                     const leaderboardBody = document.getElementById('leaderboard-body');
@@ -50,15 +50,10 @@ require_once 'dbcon.php';
                         `;
                         leaderboardBody.appendChild(row);
                     });
-                })
-                .catch(error => console.error('Error fetching leaderboard:', error));
+                });
         }
 
-        // Fetch leaderboard data every 1 second
-        setInterval(fetchLeaderboard, 1000);
-
-        // Initial fetch
-        fetchLeaderboard();
+        document.addEventListener('DOMContentLoaded', fetchLeaderboard);
     </script>
 </body>
 </html>

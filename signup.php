@@ -16,7 +16,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $user = $_POST['username'];
     $game = $_POST['game']; // Get the selected game
 
-    $checkUserSql = "SELECT score FROM dino WHERE username='$user'";
+    $checkUserSql = "SELECT score FROM dino WHERE username='$user' AND game='$game'";
     $result = $conn->query($checkUserSql);
 
     if ($result->num_rows > 0) {
@@ -27,7 +27,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $_SESSION['loggin'] = true;
     } else {
         $score = 0;
-        $insertSql = "INSERT INTO dino (username, score) VALUES ('$user', '$score')";
+        echo $game . " " . $user . " " . $score;
+        $insertSql = "INSERT INTO dino (username, score, game) VALUES ('$user', '$score', '$game')";
 
         if ($conn->query($insertSql) === TRUE) {
             $_SESSION['score'] = 0;

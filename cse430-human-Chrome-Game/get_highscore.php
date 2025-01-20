@@ -6,7 +6,7 @@ if ($_SESSION['loggin']) {
     $user = $_SESSION['username'];
 
     // Retrieve the current high score from the database
-    $query = "SELECT score FROM dino WHERE username='$user'";
+    $query = "SELECT score FROM dino WHERE username='$user' and game='human'";
     $result = $conn->query($query);
 
     if ($result->num_rows > 0) {

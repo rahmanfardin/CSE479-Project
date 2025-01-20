@@ -1,7 +1,3 @@
-<?php
-require_once 'dbcon.php';
-?>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,7 +6,7 @@ require_once 'dbcon.php';
     <link rel="icon" type="image/x-icon" href="favicon.ico">
 </head>
 <body>
-    <h1>Leaderboard</h1>
+    <h1>Game Leaderboard</h1>
     <table id="leaderboard-table">
         <thead>
             <tr>
@@ -32,10 +28,27 @@ require_once 'dbcon.php';
                 .then(data => {
                     const leaderboardBody = document.getElementById('leaderboard-body');
                     leaderboardBody.innerHTML = '';
+
+                    let currentGame = '';
+                    let serialNumber = 0;
+
                     data.forEach((entry, index) => {
+                        if (entry.game !== currentGame) {
+                            currentGame = entry.game;
+                            serialNumber = 0; // Reset serial number for each game
+
+                            // Add a row for the game title
+                            const gameRow = document.createElement('tr');
+                            gameRow.innerHTML = `
+                                <td colspan="3" style="text-align: center; font-weight: bold;">${currentGame.charAt(0).toUpperCase() + currentGame.slice(1)} Game</td>
+                            `;
+                            leaderboardBody.appendChild(gameRow);
+                        }
+                        serialNumber++;
+
                         const row = document.createElement('tr');
                         row.innerHTML = `
-                            <td>${String(index + 1).padStart(2, '0')}</td>
+                            <td>${String(serialNumber).padStart(2, '0')}</td>
                             <td>${entry.username}</td>
                             <td>${entry.score}</td>
                         `;
