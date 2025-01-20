@@ -12,8 +12,14 @@
     <form action="signup.php" method="post">
         <label for="username">Username:</label><br>
         <input type="text" id="username" name="username" required><br><br>
-        <input type="submit" value="DINO!">
         
+        <label for="game">Select Game:</label><br>
+        <select id="game" name="game" required>
+            <option value="dinosaur">Dinosaur Game</option>
+            <option value="human">Human Game</option>
+        </select><br><br>
+        
+        <input type="submit" value="DINO!">
     </form>
     <br>
     <button id="leaderboard-button" onclick="window.location.href='leaderboard.php'">Show Leaderboard</button>

@@ -14,6 +14,7 @@ if ($conn->connect_error) {
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $user = $_POST['username'];
+    $game = $_POST['game']; // Get the selected game
 
     $checkUserSql = "SELECT score FROM dino WHERE username='$user'";
     $result = $conn->query($checkUserSql);
@@ -24,9 +25,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $_SESSION['user_exists'] = true;
         $_SESSION['username'] = $user;
         $_SESSION['loggin'] = true;
-        header("Refresh: 2; url=cse430-Dinosaur-Chrome-Game/index.php");
-        //echo "Username already exists. WELCOME: " .$_SESSION['username'];
-        
     } else {
         $score = 0;
         $insertSql = "INSERT INTO dino (username, score) VALUES ('$user', '$score')";
@@ -36,33 +34,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $_SESSION['user_exists'] = false;
             $_SESSION['username'] = $user;
             $_SESSION['loggin'] = true;
-            //echo "New record created successfully. WELCOME: " .$_SESSION['username'];
-            header("Refresh: 2; url=cse430-Dinosaur-Chrome-Game/index.php");
         } else {
-            //echo "Error: " . $insertSql . "<br>" . $conn->error;
+            // Handle error
         }
+    }
+
+    // Redirect based on the selected game
+    if ($game == 'dinosaur') {
+        header("Refresh: 2; url=cse430-Dinosaur-Chrome-Game/index.php");
+    } else if ($game == 'human') {
+        header("Refresh: 2; url=cse430-human-Chrome-Game/index.php");
     }
 }
 
 $conn->close();
 ?>
-<!DOCTYPE>
-<html>
-<head>
-    <title>REDIRECTING...</title>
-    <link rel="stylesheet" type="text/css" href="style.css">
-    <link rel="icon" type="image/x-icon" href="favicon.ico">
-</head>
-<body>
-    <br>
-    <?php 
-    if ($_SESSION['user_exists']){
-        echo "<h2>Username already exists. WELCOME: " .$_SESSION['username']. "</h2>";
-    } else {
-        echo "<h2>New record created successfully. WELCOME: " .$_SESSION['username']. "</h2>";
-    }
-    
-    ?>
-    
-</body>
-</html>

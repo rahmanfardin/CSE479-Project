@@ -41,20 +41,21 @@
     }
 
     Game.prototype.initObjects = function() {
-        this.player = new Dinosaur({
+        this.player = new Human({
             context: this.context, 
             left: 10, 
             bottom: this.canvas.height - GROUND_BUFFER,
-            colour: DEFAULT_COLOUR
+            colour: DEFAULT_COLOUR,
+            height: 10 // Further adjust this value to make the human shorter
         });
-
+    
         this.background = new Background({
             context: this.context, 
             width: this.canvas.width, 
             height: this.canvas.height,
             colour: DEFAULT_COLOUR
         });
-
+    
         this.score = new ScoreBoard({
             context: this.context, 
             left: this.canvas.width - 10, 
